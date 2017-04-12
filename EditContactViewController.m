@@ -15,13 +15,16 @@
 @end
 
 @implementation EditContactViewController
+@synthesize contact;
 - (IBAction)Done:(id)sender
 {
     self.contact.name = self.nameTF.text;
     self.contact.telephone = self.telephoneTF.text;
     [self.delegate backWithContact:self.contact IsEditing:self.isEditing];
     
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"恭喜你，修改成功！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    [alert show];
+    //[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)returnBack:(id)sender
@@ -32,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.editing = YES;
+    self.isEditing = YES;
     if (self.contact == nil) {
         self.isEditing = NO;
         self.contact = [contact new];
