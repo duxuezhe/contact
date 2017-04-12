@@ -9,17 +9,16 @@
 #import "EditContactViewController.h"
 
 @interface EditContactViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *telephoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *nameTF;
+@property (weak, nonatomic) IBOutlet UITextField *telephoneTF;
 @property BOOL isEditing;
 @end
 
 @implementation EditContactViewController
-@synthesize contact;
 - (IBAction)Done:(id)sender
 {
-    self.contact.name = self.nameTextField.text;
-    self.contact.telephone = self.telephoneTextField.text;
+    self.contact.name = self.nameTF.text;
+    self.contact.telephone = self.telephoneTF.text;
     [self.delegate backWithContact:self.contact IsEditing:self.isEditing];
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
@@ -38,12 +37,12 @@
         self.isEditing = NO;
         self.contact = [contact new];
     }
-    self.nameTextField.text = self.contact.name;
-    self.telephoneTextField.text = self.contact.telephone;
+    self.nameTF.text = self.contact.name;
+    self.telephoneTF.text = self.contact.telephone;
     
     //设置textfield的代理
-    self.telephoneTextField.delegate = self;
-    self.nameTextField.delegate = self;
+    self.telephoneTF.delegate = self;
+    self.nameTF.delegate = self;
 }
 
 #pragma mark - textfield的代理方法

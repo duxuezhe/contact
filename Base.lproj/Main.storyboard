@@ -56,7 +56,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="查看联系人" id="rlR-Sm-Tbs">
                         <barButtonItem key="backBarButtonItem" title="return" id="hVx-ws-DgR"/>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="qMs-fa-E7h"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="qMs-fa-E7h">
+                            <connections>
+                                <action selector="Done:" destination="vXZ-lx-hvc" id="7vn-rC-vCy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="nameLabel" destination="eem-mg-OWb" id="zsk-Wo-3St"/>
@@ -134,15 +138,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wCy-Od-v8n">
-                                <rect key="frame" x="109" y="123" width="177" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="nameTextField:" destination="Oww-35-uEX" eventType="editingDidEnd" id="Gj9-jP-lze"/>
-                                </connections>
-                            </textField>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3Y-nG-rCW">
                                 <rect key="frame" x="0.0" y="25" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -161,8 +156,14 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Shw-AW-xWe">
-                                <rect key="frame" x="109" y="187" width="177" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pAM-AJ-Jqc">
+                                <rect key="frame" x="116" y="118" width="184" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Foi-Sp-vAh">
+                                <rect key="frame" x="116" y="182" width="184" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -171,8 +172,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="nameTextField" destination="wCy-Od-v8n" id="Rbe-zS-BDs"/>
-                        <outlet property="telephoneTextField" destination="Shw-AW-xWe" id="lSM-r0-WPj"/>
+                        <outlet property="nameTF" destination="pAM-AJ-Jqc" id="pxa-4z-Fpf"/>
+                        <outlet property="telephoneTF" destination="Foi-Sp-vAh" id="Ma8-v5-pw8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIU-At-SS8" userLabel="First Responder" sceneMemberID="firstResponder"/>

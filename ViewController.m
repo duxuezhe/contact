@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "showContactViewController.h"
-#import "EditContactViewController.h"
 #import "contact.h"
 
 #define contactsNum 5
