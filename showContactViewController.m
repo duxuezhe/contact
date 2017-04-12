@@ -7,6 +7,7 @@
 //
 
 #import "showContactViewController.h"
+#import "EditContactViewController.h"
 
 @interface showContactViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -18,12 +19,13 @@
 @synthesize contact;
 - (IBAction)Done:(id)sender
 {
-    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
-- (IBAction)Back:(id)sender
+- (IBAction)editContact:(id)sender
 {
-    
+    [self performSegueWithIdentifier:@"editContact" sender:self];
 }
+
 
 - (void)viewDidLoad
 {
@@ -50,8 +52,12 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"editContact"]) {
+        EditContactViewController *editVC = segue.destinationViewController;
+        editVC.contact = self.contact;
+        editVC.delegate = self.navigationController.viewControllers[0];
+    }
+
 }
 
 

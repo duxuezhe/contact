@@ -9,31 +9,55 @@
 #import "EditContactViewController.h"
 
 @interface EditContactViewController ()
-
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *telephoneTextField;
+@property BOOL isEditing;
 @end
 
 @implementation EditContactViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+@synthesize contact;
+- (IBAction)Done:(id)sender
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    self.contact.name = self.nameTextField.text;
+    self.contact.telephone = self.telephoneTextField.text;
+    [self.delegate backWithContact:self.contact IsEditing:self.isEditing];
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)returnBack:(id)sender
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.editing = YES;
+    if (self.contact == nil) {
+        self.isEditing = NO;
+        self.contact = [contact new];
+    }
+    self.nameTextField.text = self.contact.name;
+    self.telephoneTextField.text = self.contact.telephone;
+    
+    //设置textfield的代理
+    self.telephoneTextField.delegate = self;
+    self.nameTextField.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark - textfield的代理方法
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [textField resignFirstResponder];
+    return YES;
 }
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
 
 /*
 #pragma mark - Navigation

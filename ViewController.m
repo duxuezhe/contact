@@ -21,6 +21,11 @@
 @implementation ViewController
 @synthesize contacts;
 
+- (IBAction)addContact:(id)sender
+{
+    [self performSegueWithIdentifier:@"addContact" sender:self];
+}
+
 #pragma mark -- backWithContact:IsEditing:
 -(void)backWithContact:(contact *)contact IsEditing:(BOOL)isEditing
 {
@@ -28,11 +33,6 @@
         [self.contacts addObject:contact];
     }
     [self.tableView reloadData];
-}
-
-- (IBAction)addContact:(id)sender
-{
-    [self performSegueWithIdentifier:@"addContact" sender:self];
 }
 
 - (void)viewDidLoad

@@ -47,6 +47,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="editContact:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="J0H-Di-ywu"/>
                                     <segue destination="Oww-35-uEX" kind="modal" identifier="editContact" id="XR2-pR-F8v"/>
                                 </connections>
                             </button>
@@ -93,7 +94,7 @@
                     <navigationItem key="navigationItem" id="DbR-17-4qL">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="FHM-rb-dcf">
                             <connections>
-                                <action selector="addContact:" destination="BWp-KQ-Toa" id="ncM-p0-zZQ"/>
+                                <action selector="addContact:" destination="BWp-KQ-Toa" id="Ifp-rv-2Oy"/>
                                 <segue destination="Oww-35-uEX" kind="modal" identifier="addContact" id="JDj-8e-u4J"/>
                             </connections>
                         </barButtonItem>
@@ -138,25 +139,41 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ag6-6m-TV4">
-                                <rect key="frame" x="109" y="187" width="177" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="nameTextField:" destination="Oww-35-uEX" eventType="editingDidEnd" id="Gj9-jP-lze"/>
+                                </connections>
                             </textField>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b3Y-nG-rCW">
                                 <rect key="frame" x="0.0" y="25" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="编辑联系人" id="5KZ-w6-uNU">
-                                        <barButtonItem key="rightBarButtonItem" title="Done" id="VKq-mt-W2Y"/>
+                                        <barButtonItem key="leftBarButtonItem" title="return" id="wIc-Zt-R0C">
+                                            <connections>
+                                                <action selector="returnBack:" destination="Oww-35-uEX" id="BYV-v2-UjS"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="VKq-mt-W2Y">
+                                            <connections>
+                                                <action selector="Done:" destination="Oww-35-uEX" id="Gb3-J6-5Je"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Shw-AW-xWe">
+                                <rect key="frame" x="109" y="187" width="177" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="wCy-Od-v8n" id="Rbe-zS-BDs"/>
+                        <outlet property="telephoneTextField" destination="Shw-AW-xWe" id="lSM-r0-WPj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIU-At-SS8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
