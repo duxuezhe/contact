@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "showContactViewController.h"
+#import "EditContactViewController.h"
 #import "contact.h"
 
 #define contactsNum 5
@@ -19,6 +20,20 @@
 
 @implementation ViewController
 @synthesize contacts;
+
+#pragma mark -- backWithContact:IsEditing:
+-(void)backWithContact:(contact *)contact IsEditing:(BOOL)isEditing
+{
+    if (!isEditing) {
+        [self.contacts addObject:contact];
+    }
+    [self.tableView reloadData];
+}
+
+- (IBAction)addContact:(id)sender
+{
+    [self performSegueWithIdentifier:@"addContact" sender:self];
+}
 
 - (void)viewDidLoad
 {
@@ -77,7 +92,10 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         showVC.contact = self.contacts[indexPath.row];
     }
-    
+    else if([segue.identifier isEqualToString:@"addContact"]){
+        EditContactViewController *editVC = segue.destinationViewController;
+        editVC.delegate = self;
+    }
 }
 
 

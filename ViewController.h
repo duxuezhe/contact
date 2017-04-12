@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+#import "EditContactViewController.h"
+@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,editContactViewControllerDelegate>
 @property(strong,nonatomic) NSMutableArray *contacts;
 @end
