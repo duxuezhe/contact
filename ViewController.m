@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "showContactViewController.h"
 #import "contact.h"
 
 #define contactsNum 5
@@ -38,7 +39,7 @@
 #pragma mark -- UITableView dataSource and detegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [self performSegueWithIdentifier:@"showContact" sender:self];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -53,7 +54,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *contractCell = @"contractCell";
+    static NSString *contractCell = @"contactCell";
     //1.从重用对象池中找不用的cell对象
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:contractCell];
     //2.如果没有就自己创建对象
@@ -66,6 +67,19 @@
     
     return cell;
 }
+
+
+#pragma mark Segue跳转前的准备工作
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"showContact"]){
+        showContactViewController *showVC = segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        showVC.contact = self.contacts[indexPath.row];
+    }
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {
